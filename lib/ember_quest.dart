@@ -2,6 +2,7 @@ import 'package:ember_quest/actors/ember.dart';
 import 'package:ember_quest/objects/ground_block.dart';
 import 'package:ember_quest/objects/platform_block.dart';
 import 'package:ember_quest/objects/star.dart';
+import 'package:ember_quest/overlays/hud.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame/components.dart';
@@ -16,6 +17,9 @@ class EmberQuestGame extends FlameGame
 
   late double lastBlockXPosition = 0.0;
   late UniqueKey lastBlockKey;
+
+  int startsCollected = 0;
+  int health = 3;
 
   Color backgroundColor() {
     return const Color.fromARGB(255, 173, 223, 247);
@@ -68,6 +72,8 @@ class EmberQuestGame extends FlameGame
     );
 
     world.add(_ember);
+
+    camera.viewport.add(Hud());
   }
 
   @override
