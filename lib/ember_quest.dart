@@ -9,7 +9,8 @@ import 'package:flutter/material.dart';
 import 'managers/segment_manager.dart';
 import 'actors/water_enemy.dart';
 
-class EmberQuestGame extends FlameGame with HasKeyboardHandlerComponents {
+class EmberQuestGame extends FlameGame
+    with HasKeyboardHandlerComponents, HasCollisionDetection {
   late EmberPlayer _ember;
   double objectSpeed = 0.0;
 
@@ -63,7 +64,7 @@ class EmberQuestGame extends FlameGame with HasKeyboardHandlerComponents {
     }
 
     _ember = EmberPlayer(
-      position: Vector2(128, canvasSize.y - 70),
+      position: Vector2(128, canvasSize.y - 128),
     );
 
     world.add(_ember);
