@@ -12,6 +12,9 @@ class EmberQuestGame extends FlameGame {
   late EmberPlayer _ember;
   double objectSpeed = 0.0;
 
+  late double lastBlockXPosition = 0.0;
+  late UniqueKey lastBlockKey;
+
   Color backgroundColor() {
     return const Color.fromARGB(255, 173, 223, 247);
   }
@@ -20,6 +23,12 @@ class EmberQuestGame extends FlameGame {
     for (final block in segments[segmentIndex]) {
       switch (block.blockType) {
         case GroundBlock:
+          world.add(
+            GroundBlock(
+              gridPosition: block.gridPosition,
+              xOffset: xPositionOffset,
+            ),
+          );
         case PlatformBlock:
           add(PlatformBlock(
             gridPosition: block.gridPosition,
