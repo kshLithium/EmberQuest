@@ -1,3 +1,5 @@
+import 'dart:js_interop_unsafe';
+
 import 'package:ember_quest/ember_quest.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
@@ -28,9 +30,11 @@ class PlatformBlock extends SpriteComponent
   void update(double dt) {
     velocity.x = game.objectSpeed;
     position += velocity * dt;
-    if (position.x < -size.x) {
+
+    if (position.x < -size.x || game.health <= 0) {
       removeFromParent();
     }
+
     super.update(dt);
   }
 }

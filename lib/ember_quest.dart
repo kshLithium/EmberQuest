@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:ember_quest/actors/ember.dart';
 import 'package:ember_quest/objects/ground_block.dart';
 import 'package:ember_quest/objects/platform_block.dart';
@@ -58,7 +60,7 @@ class EmberQuestGame extends FlameGame
     }
   }
 
-  void initializeGame() {
+  void initializeGame(bool loadHud) {
     //Assume that size.x < 3200
     final segmentsToLoad = (size.x / 640).ceil();
     segmentsToLoad.clamp(0, segments.length);
@@ -70,10 +72,19 @@ class EmberQuestGame extends FlameGame
     _ember = EmberPlayer(
       position: Vector2(128, canvasSize.y - 128),
     );
+    add(_ember);
 
-    world.add(_ember);
+    if (loadHud) {
+      add(Hud());
+    }
 
-    camera.viewport.add(Hud());
+    // camera.viewport.add(Hud());
+  }
+
+  void reset() {
+    startsCollected = 0;
+    health = 3;
+    initializeGame(false);
   }
 
   @override
@@ -89,6 +100,14 @@ class EmberQuestGame extends FlameGame
     ]);
 
     camera.viewfinder.anchor = Anchor.topLeft;
-    initializeGame();
+    initializeGame(true);
+  }
+
+  @override
+  void update(double dt) {
+    if (health <= 0) {
+      overlays.add('GameOver');
+    }
+    super.update(dt);
   }
 }
