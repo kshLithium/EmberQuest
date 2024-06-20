@@ -9,6 +9,7 @@ import 'actors/water_enemy.dart';
 
 class EmberQuestGame extends FlameGame {
   late EmberPlayer _ember;
+  double objectSpeed = 0.0;
 
   void loadGameSegments(int segmentIndex, double xPositionOffset) {
     for (final block in segments[segmentIndex]) {
