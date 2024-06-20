@@ -1,5 +1,3 @@
-import 'dart:js_interop_unsafe';
-
 import 'package:ember_quest/ember_quest.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';

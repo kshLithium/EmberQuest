@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:ember_quest/actors/ember.dart';
 import 'package:ember_quest/objects/ground_block.dart';
 import 'package:ember_quest/objects/platform_block.dart';
