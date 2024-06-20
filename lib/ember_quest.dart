@@ -4,12 +4,17 @@ import 'package:ember_quest/objects/platform_block.dart';
 import 'package:ember_quest/objects/star.dart';
 import 'package:flame/game.dart';
 import 'package:flame/components.dart';
+import 'package:flutter/material.dart';
 import 'managers/segment_manager.dart';
 import 'actors/water_enemy.dart';
 
 class EmberQuestGame extends FlameGame {
   late EmberPlayer _ember;
   double objectSpeed = 0.0;
+
+  Color backgroundColor() {
+    return const Color.fromARGB(255, 173, 223, 247);
+  }
 
   void loadGameSegments(int segmentIndex, double xPositionOffset) {
     for (final block in segments[segmentIndex]) {
