@@ -1,8 +1,8 @@
 import 'package:flame/game.dart';
+import 'package:flame/components.dart';
 
 class EmberQuestGame extends FlameGame {
-  EmberQuestGame();
-
+  @override
   Future<void> onLoad() async {
     await images.loadAll([
       'block.png',
@@ -13,5 +13,7 @@ class EmberQuestGame extends FlameGame {
       'star.png',
       'water_enemy.png'
     ]);
+
+    camera.viewfinder.anchor = Anchor.topLeft;
   }
 }
